@@ -1,0 +1,26 @@
+Feature: Author creation
+  In order to add books to library
+  As the bookseller
+  I need to be able to store authors
+
+  Rules:
+  - Author must have a first name
+  - Author must have a last name
+
+  Scenario: Creating a new author called "James Langbridge"
+    Given there is an author called "James Langbridge" which has written a book called "Arduino Sketches: Tools and Techniques for Programming Wizardry"
+    When I set "James" as his first name
+    And I set "Langbridge" as his last name
+    Then I should have a new author in my memory system called "James Langbridge"
+
+  Scenario: Creating an already known author called "James Langbridge"
+    Given there is an author called "James Langbridge" which has written a book called "Professional Embedded ARM Development"
+    When I set "James" as his first name
+    And I set "Langbridge" as his last name
+    Then I should not have a new author in my memory system called "James Langbridge"
+
+  Scenario: Creating an anonymous author called "John Doe"
+    Given there is an anonymous author which has written a book called "The Book With No Name"
+    When I set his first name empty
+    And I set his last name empty
+    Then I should have a new author in my memory system called "John Doe"

@@ -1,0 +1,22 @@
+Feature: Book creation
+  In order to sell books
+  As the bookseller
+  I need to be able to store books
+
+  Rules:
+    - A book has a title
+    - A book has at least one author
+    - A book has a release date
+    - A book has a positive price > 0
+    - A book has a category
+    - A book has a stock
+
+  Scenario: Adding a book from a known author
+    Given there is book called "Arduino Sketches: Tools and Techniques for Programming Wizardry" written by "James Langbridge"
+    When I set "Arduino Sketches: Tools and Techniques for Programming Wizardry" as title
+    And I set "James Langbridge" as the author
+    And I set "2014-12-31" as release date
+    And I set "20" as price in euro
+    And I set "boring" a category
+    And I stock "30" copies
+

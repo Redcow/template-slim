@@ -1,0 +1,55 @@
+{
+    "authors": [
+        {
+            "name": "Plet François",
+            "email": "fplet@cogelec.fr",
+            "role": "Developer"
+        },
+        {
+            "name": "Bories Léo",
+            "email": "lbories@cogelec.fr",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.6",
+        "php-di/php-di": "^7.0",
+        "symfony/mailer": "^6.3",
+        "web-token/jwt-framework": "^3.2",
+        "ext-pdo": "*",
+        "ext-redis": "*",
+        "ext-sockets": "*",
+        "ext-xdebug": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controller\\": "controllers/",
+            "Config\\": "config/",
+            "Route\\": "routes/",
+            "Middleware\\": "middlewares/",
+            "Service\\": "services/",
+            "Model\\": "model/",
+            "Infrastructure\\": "infrastructure/",
+            "Test\\": "test/",
+            "Vendor\\Namespace\\": ""
+        },
+        "files": [
+            "./config/_index.php",
+            "./routes/_index.php",
+            "./services/_index.php",
+            "./middlewares/_index.php"
+        ]
+    },
+    "scripts": {
+        "test": [
+            "@putenv DB_NAME=library_test",
+            "vendor/bin/behat -f progress"
+        ]
+    },
+    "require-dev": {
+        "behat/behat": "^3.13",
+        "phpunit/phpunit": "^10.3",
+        "phpstan/phpstan": "^1.10"
+    }
+}

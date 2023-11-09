@@ -1,0 +1,19 @@
+default:
+  autoload:
+    - '%paths.base%/test'
+  suites:
+    author_suite:
+      paths:
+        - '%paths.base%/test/author'
+      contexts:
+        - contexts\AuthorContext
+    book_suite:
+      paths:
+        - '%paths.base%/test/book'
+      contexts:
+        - contexts\BookContext
+    security_suite:
+      paths:
+        - '%paths.base%/test/security'
+      contexts:
+        - contexts\SecurityContext
