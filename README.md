@@ -1,5 +1,7 @@
 # modelApiPHP
 
+/!\ Todo : les repositories ne doivent pas tous découler d'un abstract repository, privilégier la composition au lieu de l'héritage sur ce cas
+
 
 ## Debuggage
 
