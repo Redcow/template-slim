@@ -2,11 +2,11 @@
 
 namespace Infrastructure\Mail;
 
-use Infrastructure\Exceptions\CodeMessageError;
+use Infrastructure\Exceptions\AppError;
 use Infrastructure\Exceptions\ExceptionEnum;
 use Throwable;
 
-class EmailException extends CodeMessageError
+class EmailException extends AppError
 {
     public function __construct(array $to, int $level = 0, ?Throwable $previous = null)
     {

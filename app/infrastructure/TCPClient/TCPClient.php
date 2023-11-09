@@ -2,7 +2,7 @@
 
 namespace Infrastructure\TCPClient;
 
-use Infrastructure\Exceptions\CodeMessageError;
+use Infrastructure\Exceptions\AppError;
 use Socket;
 
 final class TCPClient
@@ -14,7 +14,7 @@ final class TCPClient
     }
 
     /**
-     * @throws CodeMessageError
+     * @throws AppError
      */
     static public function init(string $ip, string $port): self
     {

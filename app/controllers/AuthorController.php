@@ -21,6 +21,8 @@ use Model\Author\Create\CreateAuthor;
 use Model\Author\Create\CreateAuthorInput;
 use Model\Author\Create\CreateAuthorOutput;
 
+// Modèle précédant, à éviter car nécessite de faire appel au container pour récupérer les services propres à chaque route ( = méthode)
+// Privilégier le controller à route unique ( voir DeleteBookController ou GetAuthorListController)
 class AuthorController
 {
     use jsonResponse;

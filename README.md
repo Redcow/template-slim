@@ -5,6 +5,10 @@ aucune ne doit être considérée comme aboutie.
 Cela a pour but de déclencher des réflexions sur différents composants d'une API
 (alerte des erreurs déclenchées par le client, uniformisation de la persistance des entités, introduction au conteneur de service, développement BDD avec Behat etc.).
 
+Souhait d'évolution: 
+- Mettre en place le design pattern decorator sur les actions avec la base de données pour encrypter & compresser sur l'écriture et decompresser & decrypter sur la lecture
+- Utiliser Redis comme fournisseur principal de données, son service se chargerait de contacter la base de données seulement si nécessaire.
+
 ## Debuggage
 
 L'image PHP est à utiliser pour le développement, xdebug est installé et pret à être utilisé.

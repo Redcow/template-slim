@@ -8,7 +8,7 @@ use Config\MissingEnvVarException;
 use Infrastructure\Database\exceptions\InvalidQueryException;
 use Infrastructure\Database\exceptions\SqlConnectionException;
 use Infrastructure\Database\interfaces\DatabaseInterface;
-use Infrastructure\Logger\LogRDB;
+use Infrastructure\Logger\Logger;
 use Model\BaseEntity;
 use PDO;
 use PDOStatement;
@@ -31,7 +31,7 @@ class MysqlDatabase extends DatabaseFactory implements DatabaseInterface
     {
         try {
             $this->queryResult = self::$pdo->prepare($query);
-            LogRDB::logSQL($query, $values);
+            Logger::logSQL($query, $values);
             $this->queryResult->execute($values);
         } catch (\PDOException $exception) {
             throw InvalidQueryException::buildFromException($exception);

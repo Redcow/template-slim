@@ -3,10 +3,9 @@
 namespace Infrastructure\Exceptions;
 
 use Exception;
-use Infrastructure\Logger\LogRDB;
 use Throwable;
 
-class CodeMessageError extends Exception implements \JsonSerializable
+class AppError extends Exception implements \JsonSerializable
 {
     protected ExceptionEnum $internalCode;
     protected int $level;

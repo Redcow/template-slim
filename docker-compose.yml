@@ -1,15 +1,6 @@
 version: '3.1'
 
 services:
-  logrdb:
-    image: gnakor/logrdb
-    environment:
-      - LOGRDB_MODE=local
-      - LOGRDB_USERNAME=admin
-      - LOGRDB_PASSWORD=123456
-    ports:
-      - "6114:44000"
-
   php:
     build: docker/php
     #image: dunglas/frankenphp
@@ -45,7 +36,6 @@ services:
     extra_hosts:
       - host.docker.internal:host-gateway
     links:
-      - logrdb
       - bdd
       - mailer
 

@@ -2,10 +2,10 @@
 
 namespace Middleware;
 
-use Infrastructure\Exceptions\CodeMessageError;
+use Infrastructure\Exceptions\AppError;
 use Infrastructure\Exceptions\ExceptionEnum;
 use Infrastructure\Logger\LogCriticalityEnum;
-use Infrastructure\Logger\LogRDB;
+use Infrastructure\Logger\Logger;
 use Infrastructure\Mail\EmailException;
 use Infrastructure\Mail\SymfonyMailer;
 use Infrastructure\Trait\jsonResponse;
@@ -52,7 +52,7 @@ final class ErrorHandler extends SlimErrorHandler implements ErrorHandlerInterfa
             $exception = $this->handleNotFound($exception);
         }
 
-        if ($exception instanceof CodeMessageError) {
+        if ($exception instanceof AppError) {
             return $this->logKnownError($exception);
         } else {
             return $this->logUnknownError($exception);
@@ -61,13 +61,13 @@ final class ErrorHandler extends SlimErrorHandler implements ErrorHandlerInterfa
 
     /**
      * Log les erreurs connues dans l'application par les CodeMessageError
-     * @param CodeMessageError $exception
+     * @param AppError $exception
      * @return ResponseInterface
      */
-    private function logKnownError(CodeMessageError $exception): ResponseInterface
+    private function logKnownError(AppError $exception): ResponseInterface
     {
         // log
-        LogRDB::log(
+        Logger::log(
             LogCriticalityEnum::WARNING,
             $exception->getMessage(),
             ['exception' => $exception]
@@ -87,7 +87,7 @@ final class ErrorHandler extends SlimErrorHandler implements ErrorHandlerInterfa
     private function logUnknownError(Throwable $exception): ResponseInterface
     {
         // log
-        LogRDB::log(
+        Logger::log(
             LogCriticalityEnum::ERROR,
             "unkown error triggered : {$exception->getMessage()}",
             ['traces' => $exception->getTraceAsString()]
@@ -104,6 +104,6 @@ final class ErrorHandler extends SlimErrorHandler implements ErrorHandlerInterfa
     }
 
     private function handleNotFound(HttpNotFoundException $exception) {
-        return new CodeMessageError(ExceptionEnum::NOT_FOUND, "route not found",404);
+        return new AppError(ExceptionEnum::NOT_FOUND, "route not found",404);
     }
 }

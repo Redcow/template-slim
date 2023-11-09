@@ -2,12 +2,12 @@
 
 namespace Infrastructure\Database\exceptions;
 
-use Infrastructure\Exceptions\CodeMessageError;
+use Infrastructure\Exceptions\AppError;
 use Infrastructure\Exceptions\ExceptionEnum;
 use PDOException;
 use Throwable;
 
-class InvalidQueryException extends CodeMessageError
+class InvalidQueryException extends AppError
 {
     private const MYSQL_DUPLICATE = 1062;
     private SqlExceptionTypeEnum $type;

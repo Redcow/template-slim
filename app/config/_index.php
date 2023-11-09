@@ -4,7 +4,7 @@ namespace Config;
 
 use Infrastructure\Cache\interfaces\CacheInterface;
 use Infrastructure\Database\interfaces\DatabaseInterface;
-use Infrastructure\Logger\LogRDB;
+use Infrastructure\Logger\Logger;
 use Infrastructure\Mail\MailerInterface;
 use Infrastructure\Security\AuthSecurity;
 
@@ -50,14 +50,9 @@ function loadCache(): void
  */
 function loadLogger(): void
 {
-    requireEnvVar(LogRDB::TCP_PORT, '44001');
-    requireEnvVar(LogRDB::TCP_IP, 'logrdb');
-
-    requireEnvVar(LogRDB::IP_ENV_VAR);
-    requireEnvVar(LogRDB::LEVEL_ENV_VAR);
-    requireEnvVar(LogRDB::SQL_ENV_VAR);
-    requireEnvVar(LogRDB::HTTP_ENV_VAR);
-    requireEnvVar(LogRDB::APP_NAME_ENV_VAR);
+    requireEnvVar(Logger::TCP_PORT, '44002');
+    requireEnvVar(Logger::TCP_IP, 'logger');
+    requireEnvVar(Logger::APP_NAME_ENV_VAR);
 }
 
 function loadMailer(): void

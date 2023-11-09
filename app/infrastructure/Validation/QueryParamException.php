@@ -2,12 +2,12 @@
 
 namespace Infrastructure\Validation;
 
-use Infrastructure\Exceptions\CodeMessageError;
+use Infrastructure\Exceptions\AppError;
 use Infrastructure\Exceptions\ExceptionEnum;
 use JsonSerializable;
 use Throwable;
 
-class QueryParamException extends CodeMessageError implements JsonSerializable
+class QueryParamException extends AppError implements JsonSerializable
 {
     private array $errors;
     public function __construct(array $errors, int $level = 0, ?Throwable $previous = null)

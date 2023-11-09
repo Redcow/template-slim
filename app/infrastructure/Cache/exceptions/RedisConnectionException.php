@@ -2,11 +2,11 @@
 
 namespace Infrastructure\Cache\exceptions;
 
-use Infrastructure\Exceptions\CodeMessageError;
+use Infrastructure\Exceptions\AppError;
 use Infrastructure\Exceptions\ExceptionEnum;
 use Throwable;
 
-class RedisConnectionException extends CodeMessageError
+class RedisConnectionException extends AppError
 {
     public function __construct(string $message = "", int $level = 0, ?Throwable $previous = null)
     {
