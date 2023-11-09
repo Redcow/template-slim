@@ -1,7 +1,9 @@
 # modelApiPHP
 
-/!\ Todo : les repositories ne doivent pas tous découler d'un abstract repository, privilégier la composition au lieu de l'héritage sur ce cas
-
+Ce modèle présente de nombreuses idées initiées, ouvertes aux idées, 
+aucune ne doit être considérée comme aboutie.
+Cela a pour but de déclencher des réflexions sur différents composants d'une API
+(alerte des erreurs déclenchées par le client, uniformisation de la persistance des entités, introduction au conteneur de service, développement BDD avec Behat etc.).
 
 ## Debuggage
 
@@ -76,15 +78,15 @@ L'entité correspond généralement à une table en base de données, les propri
 Les cas d'usage (c'est à dire ce que FAIT l'application) sont répertoriés en sous dossier, on va y retrouver la structure définie suivante
 
 - le cas d'usage en lui même écrit "*fonction* *Entité*"
-- l'input (ou *request*)
-- l'output (ou *response*)
+- l'input (ou *request*, nommé ainsi pour ne pas confondre avec la request HTTP)
+- l'output (ou *response*, nommé ainsi pour ne pas confondre avec la response HTTP)
 - un dossier 'interfaces' contenant l'ensemble des interfaces utilisées dans le cas d'usage
 
 Dans un souci d'architecture pérenne, le cas d'usage doit être libre de toute dépendance/détails technique
 
 Ainsi quand il fait référence à des besoins de services, le cas d'usage mentionne des interfaces (souvent comparés à des *contrats* ) afin d'imposer une façon de fonctionner sans se lier à une classe dite concrète.
 
-De la même façon, pour une réutilisation plus simple du cas d'usage, le résultat de celui-ci ne doit jamais être formaté, ni retourné, le cas d'usage se content de stocker ses résultats bruts dans l'objet de sortie l'output.
+De la même façon, pour une réutilisation plus simple du cas d'usage, le résultat de celui-ci ne doit jamais être formaté, ni retourné, le cas d'usage se contente de stocker ses résultats bruts dans l'objet de sortie, l'output.
 
 Afin d'éviter toute régression, le cas d'usage impose ses informations d'entrées par l'input. L'input a l'avantage d'être de la forme d'un objet
 
