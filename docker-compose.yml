@@ -18,12 +18,6 @@ services:
 
       CACHE_HOST: redis
 
-      LOGRDB_IP: logrdb
-      LOGRDB_LEVEL: debug
-      LOGRDB_SQL: all
-      LOGRDB_HTTP: all
-      LOGRDB_APP_NAME: book_php_sample
-
       MAILER_DNS: mailer
 
       APP_NAME: TEMPLATE-APP
