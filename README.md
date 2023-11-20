@@ -1,6 +1,8 @@
 # modelApiPHP
 
-Ce modèle présente de nombreuses idées initiées, ouvertes aux idées, 
+But du template : Présentation en entreprise d'un modèle devant se baser d'une partie de l'existant en mettant un pied dans une architecture dite clean dans le but de corriger des problématiques existantes
+
+Ce modèle présente de nombreuses idées initiées, ouvertes aux questionnement, 
 aucune ne doit être considérée comme aboutie.
 Cela a pour but de déclencher des réflexions sur différents composants d'une API
 (alerte des erreurs déclenchées par le client, uniformisation de la persistance des entités, introduction au conteneur de service, développement BDD avec Behat etc.).
@@ -54,6 +56,7 @@ Ils définissent également les validations de paramètres (via des attributs Qu
 
 
 ## Conteneur de services (app/services)
+(ne pas bondir au plafond pour les initiés, j'ai représenté le chargement des services de façon manuelle, même si la plupart seraient autloadés normalement, l'idée était de présenter le rôle du conteneur de service).
 
 Liste les différents services pouvant être autoloadés dans les controlleurs
 
@@ -77,7 +80,8 @@ Création du le conteur de services via app/services/_index.php
 Contient l'ensemble du code métier, c'est à dire les fonctionnalités
 Chaque grand thème métier est rangé dans un dossier qui lui est propre.
 
-L'entité correspond généralement à une table en base de données, les propriétés liées à une colonne de table portent l'attribut DbColumn.
+dans une clean architecture pure, l'entité ne représente pas une table de base de données, elle ne doit pas être vue comme une entité d'orm, mais pour les besoins de l'entreprise et son initiation à l'architecture, il était plus simple en terme de compréhension de joindre les deux.
+Les propriétés liées à une colonne de table portent l'attribut DbColumn .
 
 Les cas d'usage (c'est à dire ce que FAIT l'application) sont répertoriés en sous dossier, on va y retrouver la structure définie suivante
 
